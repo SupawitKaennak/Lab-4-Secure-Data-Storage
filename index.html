@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4: Secure Data Storage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Lab 4: Secure Data Storage</h1>
+            <p>ทดสอบการจัดเก็บข้อมูลอย่างปลอดภัยและการจัดการ Session</p>
+        </header>
+
+        <main>
+            <div class="code-display">
+                <h2>📋 Security Implementation</h2>
+                <div class="code-section">
+                    <div class="code-block">
+                        <h3>✅ Secure Password Hashing (Simulated)</h3>
+                        <pre><code>async function hashPassword(password) {
+    // Using Web Crypto API (simplified simulation)
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password + 'salt123');
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}</code></pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <h3>✅ Secure Session Management</h3>
+                        <pre><code>function createSecureSession(userId) {
+    const sessionData = {
+        userId: userId,
+        timestamp: Date.now(),
+        token: generateSecureToken()
+    };
+    
+    // Store in secure httpOnly cookie (simulated)
+    return sessionData;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <h2>🔒 ทดสอบ Secure Storage:</h2>
+                
+                <div class="form-section">
+                    <h3>🔑 Password Hashing Test</h3>
+                    <div class="form-group">
+                        <label for="passwordInput">รหัสผ่านที่ต้องการ hash:</label>
+                        <input type="password" id="passwordInput" placeholder="Enter password to hash">
+                        <button type="button" class="btn btn-primary" id="hashBtn">
+                            🔐 Hash Password
+                        </button>
+                    </div>
+                    <div class="result-display" id="hashResult">
+                        <p>Enter a password and click "Hash Password" to see the hashed result...</p>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>👤 Session Management Test</h3>
+                    <div class="form-group">
+                        <label for="userIdInput">User ID:</label>
+                        <input type="text" id="userIdInput" placeholder="Enter user ID">
+                        <button type="button" class="btn btn-warning" id="sessionBtn">
+                            📋 Create Session
+                        </button>
+                    </div>
+                    <div class="result-display" id="sessionResult">
+                        <p>Enter a user ID and click "Create Session" to generate session data...</p>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>🔍 Data Storage Simulation</h3>
+                    <div class="form-group">
+                        <label for="userData">User Data (JSON):</label>
+                        <textarea id="userData" rows="4" placeholder='{"name": "John Doe", "email": "john@example.com", "role": "user"}'></textarea>
+                        <button type="button" class="btn btn-success" id="storeBtn">
+                            💾 Store Data Securely
+                        </button>
+                    </div>
+                    <div class="result-display" id="storageResult">
+                        <p>Enter JSON data and click "Store Data Securely" to see encryption simulation...</p>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>📊 Current Session Status</h3>
+                    <div class="session-status" id="sessionStatus">
+                        <p>No active session</p>
+                    </div>
+                    <button type="button" class="btn btn-danger" id="logoutBtn" disabled>
+                        🚪 Logout
+                    </button>
+                </div>
+            </div>
+
+            <div class="security-info">
+                <h3>🛡️ Security Features Demonstrated</h3>
+                <ul>
+                    <li><strong>Password Hashing:</strong> SHA-256 with salt for secure password storage</li>
+                    <li><strong>Session Management:</strong> Secure token generation and session tracking</li>
+                    <li><strong>Data Encryption:</strong> Simulated encryption for sensitive data storage</li>
+                    <li><strong>Secure Cookies:</strong> httpOnly cookie simulation for session storage</li>
+                    <li><strong>Token Generation:</strong> Cryptographically secure random tokens</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>🔍 This lab demonstrates secure data storage practices including password hashing, session management, and data encryption</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
