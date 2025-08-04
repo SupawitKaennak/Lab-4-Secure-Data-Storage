@@ -1,4 +1,5 @@
 # Lab 4: Secure Data Storage
+<img width="1173" height="890" alt="{EC7E0F37-2860-4FB8-88E1-2792F7687000}" src="https://github.com/user-attachments/assets/5ae37e31-5f4c-41eb-b357-909b86a0e22f" />
 
 ## Overview
 This lab demonstrates secure data storage practices including password hashing, session management, and data encryption. It provides a hands-on interface to test various security implementations.
@@ -132,4 +133,5 @@ function generateSecureToken() {
 - Add session timeout functionality
 - Integrate with backend storage
 - Add user authentication flow
+
 - Implement proper error logging 
